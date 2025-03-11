@@ -5,6 +5,8 @@ import org.springframework.http.ResponseEntity;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.util.Base64;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ByteArrayResource;
 import org.springframework.http.HttpHeaders;
@@ -29,6 +31,7 @@ import com.itextpdf.text.Image;
 import com.itextpdf.text.pdf.PdfWriter;
 import com.manel.aigles.model.FormData;
 import com.manel.aigles.service.FormDataService;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -154,6 +157,13 @@ public class QRController {
                 .body(resource);    }
     
    
+    
+    
+    
+    
+    
+    
+    
     // Méthodes CRUD pour les données
     @PostMapping("/add")
     public FormData addFormData(@RequestBody FormData formData) {
@@ -169,4 +179,16 @@ public class QRController {
     public FormData updateEmp(@RequestBody FormData formdata) {
         return formDataService.updateEmp(formdata);
     }
+    @RequestMapping(method=RequestMethod.GET)
+	List <FormData> getAllMedicaments(){
+		return formDataService.getAllEmployees();
+		
+		
+	}
+    
+    @RequestMapping(value="/{matricule}",method = RequestMethod.DELETE)
+	public void deleteByMatricule(@PathVariable("matricule") String matricule)
+	{
+	formDataService.deleteEmployeeByMatricule(matricule);
+	}
 }

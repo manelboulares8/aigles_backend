@@ -5,4 +5,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface FormDataRepository extends JpaRepository<FormData, String> {
     FormData findByMatricule(String matricule);
+    void deleteByMatricule(String matricule);
+
 }

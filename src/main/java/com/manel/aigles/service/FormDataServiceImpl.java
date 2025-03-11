@@ -2,6 +2,9 @@ package com.manel.aigles.service;
 
 import com.manel.aigles.model.FormData;
 import com.manel.aigles.repos.FormDataRepository;
+
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -35,4 +38,17 @@ public class FormDataServiceImpl implements FormDataService {
     public FormData createEmp(FormData formData) {
         return formDataRepository.save(formData);
     }
+
+	@Override
+	public List<FormData> getAllEmployees() {
+		return formDataRepository.findAll();
+	}
+
+	@Override
+	public void deleteEmployeeByMatricule(String matricule) {
+		 formDataRepository.deleteById(matricule);
+	}
+	
+		
+	
 }
